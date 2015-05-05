@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <style>
-      textarea {
+      code {
         resize: none;
         width: 100%;
-        height: 150px;
         border: none;
         outline: none;
         font-size: 16px;
@@ -20,7 +19,7 @@
       }
 
       #viewer {
-        margin-top: 100px;
+        margin-top: 50px;
       }
     </style>
 
@@ -35,19 +34,20 @@
     <script src='knex.js'></script>
 
     <script type='text/javascript'>
-      var knexBuilder = document.getElementById('knex');
-      function onKnexKeyPress(event) {
-        if (window.event.keyCode == 13) {
-          var response;
-          var knex = Knex({});
-          try {
-            response = eval(event.target.value).toQuery();
-          } catch (error) {
-            response = "Invalid knex expression";
-          }
-          document.getElementById('sql').value = response;
-          event.preventDefault();
+      function showSQL(event) {
+        var knex = Knex({});
+        var response;
+        try {
+          response = eval(event.target.innerHTML).toQuery();
+        } catch (error) {
+          response = "Invalid knex expression";
         }
+        document.getElementById('sql').innerHTML = response;
+      }
+
+      function adjustTextAreaSize(event) {
+        event.target.style.height = "";
+        return event.target.style.height = event.target.scrollHeight + "px";
       }
     </script>
 
@@ -68,10 +68,10 @@
 
       </header>
       <section id='viewer'>
-        <strong>KNEX</strong> <em>Insert your knex expression then hit enter to see some sql:</em>
-        <textarea id="knex" onkeypress="onKnexKeyPress(event);" placeholder="knex.select('column').from('table')"></textarea>
+        <strong>KNEX</strong>
+        <pre><code id="knex" oninput="adjustTextAreaSize(event);showSQL(event);" onload="showSQL(event);" contenteditable="true">knex('column')</code></pre>
         <strong>SQL</strong>
-        <textarea id="sql" placeholder='select "column" from "table"'></textarea>
+        <pre><code id="sql">select * from column</code></pre>
       </section>
       <footer>
         <!--<p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a></small></p>-->
