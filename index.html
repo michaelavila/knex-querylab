@@ -37,11 +37,12 @@
       function showSQL(event) {
         var knex = Knex({});
         var response;
+        var sql = document.getElementById('sql');
         try {
-          document.getElementById('sql').innerHTML = eval(event.target.innerHTML).toQuery();
-          document.getElementById('sql').style.color = "#000000";
+          sql.innerHTML = eval(event.target.innerHTML).toQuery();
+          sql.style.color = "#000000";
         } catch (error) {
-          document.getElementById('sql').style.color = "#CCCCCC";
+          sql.style.color = "#CCCCCC";
         }
       }
 
@@ -56,7 +57,7 @@
     <div class="wrapper">
       <header>
         <h1 class="header">Knex Query Lab</h1>
-        <p class="header">A place to experiment with the knex module for writing SQL.</p>
+        <p class="header">Experiment with the knex API to build SQL</p>
 
         <!--<ul>
           <li class="download"><a class="buttons" href="https://github.com/michaelavila/knex-querylab/zipball/master">Download ZIP</a></li>
@@ -71,7 +72,7 @@
         <strong>KNEX</strong> <small><em>Insert knex expressions below:</em></small>
         <pre><code id="knex" oninput="adjustTextAreaSize(event);showSQL(event);" onload="showSQL(event);" contenteditable="true">knex('column')</code></pre>
         <strong>SQL</strong>
-        <pre><code id="sql">select * from column</code></pre>
+        <pre><code id="sql" class="sql">select * from column</code></pre>
       </section>
       <footer>
         <p><small><a href="https://github.com/michaelavila/knex-querylab">michaelavila/knex-querylab</a></small></p>
