@@ -47,7 +47,7 @@
         var response;
         var sql = document.getElementById('sql');
         try {
-          sql.innerHTML = eval(event.target.innerHTML).toQuery();
+          sql.innerHTML = eval(event.target.childNodes[0].nodeValue).toQuery();
           sql.style.color = "#000000";
         } catch (error) {
           sql.style.color = "#CCCCCC";
@@ -87,6 +87,6 @@
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
+
   </body>
 </html>
