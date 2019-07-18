@@ -1,2 +1,20 @@
 .App {
+  margin: 20px;
+}
+
+.dialectSelect {
+  margin: 20px 0 20px 0;
+}
+
+.expressionInput {
+  display: block;
+  width: 100%;
+  font-size: 18px;
+}
+
+code {
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+  font-size: 18px;
 }
