@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/knex-querylab/static/css/main.1543b0ba.chunk.css",
-    "main.js": "/knex-querylab/static/js/main.a1e3124d.chunk.js",
-    "main.js.map": "/knex-querylab/static/js/main.a1e3124d.chunk.js.map",
+    "main.js": "/knex-querylab/static/js/main.73949e9a.chunk.js",
+    "main.js.map": "/knex-querylab/static/js/main.73949e9a.chunk.js.map",
     "runtime~main.js": "/knex-querylab/static/js/runtime~main.0f84ab14.js",
     "runtime~main.js.map": "/knex-querylab/static/js/runtime~main.0f84ab14.js.map",
-    "static/js/2.55c20471.chunk.js": "/knex-querylab/static/js/2.55c20471.chunk.js",
-    "static/js/2.55c20471.chunk.js.map": "/knex-querylab/static/js/2.55c20471.chunk.js.map",
+    "static/js/2.3ce5ed1d.chunk.js": "/knex-querylab/static/js/2.3ce5ed1d.chunk.js",
+    "static/js/2.3ce5ed1d.chunk.js.map": "/knex-querylab/static/js/2.3ce5ed1d.chunk.js.map",
     "index.html": "/knex-querylab/index.html",
-    "precache-manifest.3795ea4abb0ff502a742652243e2bcb3.js": "/knex-querylab/precache-manifest.3795ea4abb0ff502a742652243e2bcb3.js",
+    "precache-manifest.9a30e6a91a40a2eb555451819eab635a.js": "/knex-querylab/precache-manifest.9a30e6a91a40a2eb555451819eab635a.js",
     "service-worker.js": "/knex-querylab/service-worker.js",
     "static/css/main.1543b0ba.chunk.css.map": "/knex-querylab/static/css/main.1543b0ba.chunk.css.map"
   }
