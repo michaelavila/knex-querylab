@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9445feafe46847eb4d3215e1bd3f510b",
+    "revision": "346483565931a99cbba00ee2b9e2f0b6",
     "url": "/knex-querylab/index.html"
   },
   {
-    "revision": "b339ea104ae03a544263",
+    "revision": "92bb29a8c009198e8a1b",
     "url": "/knex-querylab/static/css/main.1543b0ba.chunk.css"
   },
   {
-    "revision": "427c289c200fb26e7a6a",
-    "url": "/knex-querylab/static/js/2.04e205bf.chunk.js"
+    "revision": "95b25cebb47e1904895e",
+    "url": "/knex-querylab/static/js/2.55c20471.chunk.js"
   },
   {
-    "revision": "b339ea104ae03a544263",
-    "url": "/knex-querylab/static/js/main.1e3ce0a0.chunk.js"
+    "revision": "92bb29a8c009198e8a1b",
+    "url": "/knex-querylab/static/js/main.a1e3124d.chunk.js"
   },
   {
     "revision": "d88110396bfaf9589a5a",
