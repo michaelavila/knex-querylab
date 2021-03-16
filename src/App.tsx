@@ -31,7 +31,7 @@ function allDialects() {
 function translate(knexjs: string, dialect: Dialect): string {
   const knex = Knex({client: dialect})
   try {
-    return eval(knexjs).toQuery();
+    return eval(knexjs).toSQL().sql;
   } catch {
     return "syntax error"
   }
