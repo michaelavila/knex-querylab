@@ -84,7 +84,7 @@ const App: React.FC = () => {
   const displayQuery = LZString.decompressFromEncodedURIComponent(query) || "Unknown error";
 
   return (
-    <Container className='App'>
+    <div className='App'>
       <Typography variant='h2'>Knex Query Lab</Typography>
       <Typography variant='subtitle1'>
         Experiment with the <a href='https://knexjs.org'>KnexJS</a> API to build
@@ -101,7 +101,7 @@ const App: React.FC = () => {
 
       <TextField className="expressionInput" multiline={true} onChange={(e) => setQuery(LZString.compressToEncodedURIComponent(e.target.value))} value={displayQuery}></TextField>
       <code>{translate(displayQuery, dialect)}</code>
-    </Container>
+    </div>
   );
 }
 

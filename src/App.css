@@ -2,6 +2,11 @@
   margin: 20px;
 }
 
+h2 {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
 .dialectSelect {
   margin: 20px 0 20px 0;
 }
@@ -12,9 +17,14 @@
   font-size: 18px;
 }
 
+input {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 code {
   display: block;
   width: 100%;
-  margin-top: 30px;
+  padding-top: 30px;
   font-size: 18px;
 }
