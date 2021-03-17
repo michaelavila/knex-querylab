@@ -1,46 +1,40 @@
 import Knex from 'knex';
 import LZString from 'lz-string';
 import React, { useState, useCallback, Dispatch, SetStateAction } from 'react';
-import Container from '@material-ui/core/Container';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
 import qs, { ParsedQuery } from 'query-string';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { tomorrowNight, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 import './App.css';
-import { isString, isArray } from 'util';
+import { isArray } from 'util';
 
 enum Dialect {
-  //mssql = "mssql",
-  mysql = "mysql",
-  mysql2 = "mysql2",
-  //oracle = "oracle",
-  oracledb = "oracledb",
-  postgres = "postgres",
-  redshift = "redshift",
-  sqlite3 = "sqlite3",
+    //mssql = "mssql",
+    mysql = "mysql",
+    mysql2 = "mysql2",
+    //oracle = "oracle",
+    oracledb = "oracledb",
+    postgres = "postgres",
+    redshift = "redshift",
+    sqlite3 = "sqlite3",
 }
 
 // annoying
 function allDialects() {
-  var dialects = []
-  for (const d in Dialect) {
-    dialects.push(d)
-  }
-  return dialects
+    var dialects = []
+    for (const d in Dialect) {
+        dialects.push(d)
+    }
+    return dialects
 }
 
 function translate(knexjs: string, dialect: string): string {
-  const knex = Knex({client: dialect})
-  try {
-    const query = eval(knexjs).toQuery();
-    return eval(knexjs).toSQL().sql;
-  } catch {
-    return "syntax error"
-  }
+    const knex = Knex({client: dialect})
+    try {
+        return eval(knexjs).toSQL().sql;
+    } catch {
+        return "syntax error"
+    }
 }
 
 function setQueryStringWithoutPageReload(qsValue: string) { 
@@ -67,46 +61,46 @@ function getQueryStringValue(key: string, queryString: string = window.location.
 };
 
 function useQueryString(key: string, initialValue: string): [string, Dispatch<SetStateAction<string>>] {
-  const [value, setValue] = useState(getQueryStringValue(key) || initialValue);
-  const onSetValue = useCallback(
-    newValue => {
-      setValue(newValue);
-      setQueryStringValue(key, newValue);
-    },
-    [key]
-  );
+    const [value, setValue] = useState(getQueryStringValue(key) || initialValue);
+    const onSetValue = useCallback(
+        newValue => {
+            setValue(newValue);
+            setQueryStringValue(key, newValue);
+        },
+        [key]
+    );
 
-  return [value, onSetValue];
+    return [value, onSetValue];
 }
 
 const App: React.FC = () => {
-  const [dialect, setDialect] = useQueryString('dialect', Dialect.sqlite3)
-  const [query, setQuery] = useQueryString('query', LZString.compressToEncodedURIComponent("knex('change').select('me').count();"));
+    const [dialect, setDialect] = useQueryString('dialect', Dialect.sqlite3)
+    const [query, setQuery] = useQueryString('query', LZString.compressToEncodedURIComponent("knex('change').select('me').count();"));
 
-  const displayQuery = LZString.decompressFromEncodedURIComponent(query) || "Unknown error";
+    const displayQuery = LZString.decompressFromEncodedURIComponent(query) || "Unknown error";
 
-  return (
-    <Container className='App'>
-      <Typography variant='h2'>Knex Query Lab</Typography>
-      <Typography variant='subtitle1'>
-        Experiment with the <a href='https://knexjs.org'>KnexJS</a> API to build
-        SQL. <a href="https://github.com/michaelavila/knex-querylab">Also, view source.</a>
-      </Typography>
+    return (
+        <div className='App'>
+            <h2>Knex Query Lab</h2>
+            <h6>
+                Experiment with the <a href='https://knexjs.org'>KnexJS</a> API to build
+                SQL. <a href="https://github.com/michaelavila/knex-querylab">Also, view source.</a>
+            </h6>
 
-      <div>
-        <Select className="dialectSelect" value={dialect} onChange={(event) => setDialect(event.target.value as Dialect)}>
-        {allDialects().map((d, i) => {
-          return <MenuItem key={i} value={d}>{d}</MenuItem>
-        })}
-        </Select>
-      </div>
+            <div>
+                <select className="dialectSelect" value={dialect} onChange={(event) => setDialect(event.target.value as Dialect)}>
+                    {allDialects().map((d, i) => {
+                        return <option key={i} value={d}>{d}</option>
+                    })}
+                </select>
+            </div>
 
-      <TextField className="expressionInput" multiline={true} onChange={(e) => setQuery(LZString.compressToEncodedURIComponent(e.target.value))} value={displayQuery}></TextField>
-        <div className="sql">
-      <SyntaxHighlighter language="sql" style={tomorrow}>{translate(displayQuery, dialect)}</SyntaxHighlighter>
+            <textarea className="expressionInput" onChange={(e) => setQuery(LZString.compressToEncodedURIComponent(e.target.value))} value={displayQuery}></textarea>
+            <div className="sql">
+                <SyntaxHighlighter language="sql" style={tomorrow}>{translate(displayQuery, dialect)}</SyntaxHighlighter>
+            </div>
         </div>
-    </Container>
-  );
+    );
 }
 
 export default App;
