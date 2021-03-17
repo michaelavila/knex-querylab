@@ -9,6 +9,8 @@
     "@types/react": "16.8.23",
     "@types/react-dom": "16.8.4",
     "knex": "^0.19.5",
+    "lz-string": "^1.4.4",
+    "query-string": "^6.14.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1"
@@ -37,6 +39,7 @@
     ]
   },
   "devDependencies": {
+    "@types/lz-string": "^1.3.34",
     "gh-pages": "^2.0.1",
     "mssql": "npm:noop@^0.2.2",
     "typescript": "3.5.3"
