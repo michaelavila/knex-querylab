@@ -7,6 +7,10 @@ h2 {
     padding-bottom: 10px;
 }
 
+.sql {
+    padding-top: 40px;
+}
+
 .dialectSelect {
   margin: 20px 0 20px 0;
 }
@@ -18,13 +22,5 @@ h2 {
 }
 
 input {
-    padding-top: 20px;
     padding-bottom: 20px;
-}
-
-code {
-  display: block;
-  width: 100%;
-  padding-top: 30px;
-  font-size: 18px;
 }

@@ -7,6 +7,8 @@ import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import qs, { ParsedQuery } from 'query-string';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { tomorrowNight, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 import './App.css';
 import { isString, isArray } from 'util';
@@ -84,7 +86,7 @@ const App: React.FC = () => {
   const displayQuery = LZString.decompressFromEncodedURIComponent(query) || "Unknown error";
 
   return (
-    <div className='App'>
+    <Container className='App'>
       <Typography variant='h2'>Knex Query Lab</Typography>
       <Typography variant='subtitle1'>
         Experiment with the <a href='https://knexjs.org'>KnexJS</a> API to build
@@ -100,8 +102,10 @@ const App: React.FC = () => {
       </div>
 
       <TextField className="expressionInput" multiline={true} onChange={(e) => setQuery(LZString.compressToEncodedURIComponent(e.target.value))} value={displayQuery}></TextField>
-      <code>{translate(displayQuery, dialect)}</code>
-    </div>
+        <div className="sql">
+      <SyntaxHighlighter language="sql" style={tomorrow}>{translate(displayQuery, dialect)}</SyntaxHighlighter>
+        </div>
+    </Container>
   );
 }
 
