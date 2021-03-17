@@ -81,7 +81,7 @@ const App: React.FC = () => {
 
     return (
         <div className='App'>
-            <h2>Knex Query Lab</h2>
+            <h2>Knex QueryLab</h2>
             <h6>
                 Experiment with the <a href='https://knexjs.org'>KnexJS</a> API to build
                 SQL. <a href="https://github.com/michaelavila/knex-querylab">Also, view source.</a>
