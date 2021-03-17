@@ -31,13 +31,10 @@ function allDialects() {
   return dialects
 }
 
-function translate(knexjs: string, dialect: Dialect): string {
+function translate(knexjs: string, dialect: string): string {
   const knex = Knex({client: dialect})
   try {
     const query = eval(knexjs).toQuery();
-    console.log(query);
-    console.log(LZString.compressToEncodedURIComponent(query));
-    console.log(LZString.compressToEncodedURIComponent(query).length);
     return eval(knexjs).toSQL().sql;
   } catch {
     return "syntax error"
@@ -81,7 +78,7 @@ function useQueryString(key: string, initialValue: string): [string, Dispatch<Se
 }
 
 const App: React.FC = () => {
-  const [dialect, setDialect] = useState(Dialect.sqlite3)
+  const [dialect, setDialect] = useQueryString('dialect', Dialect.sqlite3)
   const [query, setQuery] = useQueryString('query', LZString.compressToEncodedURIComponent("knex('change').select('me').count();"));
 
   const displayQuery = LZString.decompressFromEncodedURIComponent(query) || "Unknown error";
