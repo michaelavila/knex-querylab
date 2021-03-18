@@ -42,18 +42,18 @@ export default function App() {
 	return (
 		<div className='App'>
 			{/* header */}
-			<div><h1>Knex QueryLab</h1></div>
+			<header><h1>Knex QueryLab</h1></header>
 
 			{/* body */}
 			{/* body - select dialect */}
-			<div>
+			<div className='dialect'>
 				<select value={dialect} onChange={updateDialect}>
 					{allDialects().map((d, i) => { return <option key={i} value={d}>{d}</option> })}
 				</select>
 			</div>
 
 			{/* body - input knex query*/}
-			<div>
+			<div className='expressionEditor'>
 				<Editor
 					value={displayQuery}
 					onValueChange={updateQuery}
@@ -61,7 +61,7 @@ export default function App() {
 			</div>
 
 			{/* body - output sql*/}
-			<div>
+			<div className='queryViewer'>
 				<Editor
 					disabled={true}
 					value={sql}
@@ -70,22 +70,24 @@ export default function App() {
 			</div>
 
 			{/* body - output bindings*/}
-			<table>
-				<thead><tr><td>Binding</td><td>Value</td></tr></thead>
-				<tbody>
-				{bindings.map((value, index) => {
-					return (<tr key={index+1}><td>{index+1}</td><td>{value}</td></tr>);
-				})}
-				</tbody>
-			</table>
+			<div className='bindingsViewer'>
+				<table>
+					<thead><tr><td>Binding</td><td>Value</td></tr></thead>
+					<tbody>
+						{bindings.map((value, index) => {
+							return (<tr key={index+1}><td>{index+1}</td><td>{value}</td></tr>);
+						})}
+					</tbody>
+				</table>
+			</div>
 
 			{/* footer */}
-			<div>
+			<footer>
 				<span>
 					Experiment with the <a href='https://knexjs.org'>KnexJS</a> API to build
 					SQL. <a href="https://github.com/michaelavila/knex-querylab">View source.</a>
 				</span>
-			</div>
+			</footer>
 		</div>
 	);
 };

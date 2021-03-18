@@ -1,2 +1,30 @@
+body {
+  background-color: #FFF;
+}
+
 .App {
+  width: 60%;
+  margin: auto;
+}
+
+.expressionEditor {
+  padding-left: 20px;
+  min-height: 100px;
+  background-color: #EEE;
+  margin: 20px 0 20px 0;
+}
+
+.queryViewer {
+  padding-left: 20px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #EEE;
+}
+
+.bindingsViewer table {
+  background-color: #DDD;
+}
+
+footer {
+  margin-top: 100px;
 }
