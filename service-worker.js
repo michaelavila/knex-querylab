@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/knex-querylab/precache-manifest.9bdae5354395e4fde47217d531a2293a.js"
+  "/knex-querylab/precache-manifest.4f9879e2208b2b46a9ab3727f5722191.js"
 );
 
 self.addEventListener('message', (event) => {
