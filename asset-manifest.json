@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/knex-querylab/static/css/main.7f40a89f.chunk.css",
-    "main.js": "/knex-querylab/static/js/main.3fefb88d.chunk.js",
-    "main.js.map": "/knex-querylab/static/js/main.3fefb88d.chunk.js.map",
+    "main.css": "/knex-querylab/static/css/main.e254f8ed.chunk.css",
+    "main.js": "/knex-querylab/static/js/main.2ecced43.chunk.js",
+    "main.js.map": "/knex-querylab/static/js/main.2ecced43.chunk.js.map",
     "runtime~main.js": "/knex-querylab/static/js/runtime~main.0f84ab14.js",
     "runtime~main.js.map": "/knex-querylab/static/js/runtime~main.0f84ab14.js.map",
-    "static/js/2.daad1af3.chunk.js": "/knex-querylab/static/js/2.daad1af3.chunk.js",
-    "static/js/2.daad1af3.chunk.js.map": "/knex-querylab/static/js/2.daad1af3.chunk.js.map",
+    "static/css/2.79a354b7.chunk.css": "/knex-querylab/static/css/2.79a354b7.chunk.css",
+    "static/js/2.07f10644.chunk.js": "/knex-querylab/static/js/2.07f10644.chunk.js",
+    "static/js/2.07f10644.chunk.js.map": "/knex-querylab/static/js/2.07f10644.chunk.js.map",
     "index.html": "/knex-querylab/index.html",
-    "precache-manifest.3ad9c2ad1095a3af7e1702890d9fe65e.js": "/knex-querylab/precache-manifest.3ad9c2ad1095a3af7e1702890d9fe65e.js",
+    "precache-manifest.475f9d7653b06ab890c79a9e2bcf12e4.js": "/knex-querylab/precache-manifest.475f9d7653b06ab890c79a9e2bcf12e4.js",
     "service-worker.js": "/knex-querylab/service-worker.js",
-    "static/css/main.7f40a89f.chunk.css.map": "/knex-querylab/static/css/main.7f40a89f.chunk.css.map"
+    "static/css/2.79a354b7.chunk.css.map": "/knex-querylab/static/css/2.79a354b7.chunk.css.map",
+    "static/css/main.e254f8ed.chunk.css.map": "/knex-querylab/static/css/main.e254f8ed.chunk.css.map"
   }
 }
