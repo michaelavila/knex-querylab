@@ -16,6 +16,8 @@ import { highlight, languages } from 'prismjs';
 import 'prismjs/components/prism-sql';
 import 'prismjs/themes/prism-solarizedlight.css'; // change the theme here
 
+import { format } from 'sql-formatter';
+
 import { FormControl, InputLabel, Select, MenuItem, Typography, Table, TableHead, TableBody, TableRow, TableCell, Link, Paper, Grid, TableContainer } from '@material-ui/core';
 
 
@@ -77,7 +79,7 @@ export default function App() {
 						disabled={true}
 						value={toQuery}
 						onValueChange={noop}
-						highlight={(code) => highlight(code, languages.sql, 'sql')} />
+						highlight={(code) => highlight(format(code), languages.sql, 'sql')} />
 				</Paper>
 
 				<Typography className='subtitle' variant='h6'>SQL - Native</Typography>
@@ -89,7 +91,7 @@ export default function App() {
 						disabled={true}
 						value={sql}
 						onValueChange={noop}
-						highlight={(code) => highlight(code, languages.sql, 'sql')} />
+						highlight={(code) => highlight(format(code), languages.sql, 'sql')} />
 				</Paper>
 
 				{/* body - output bindings*/}
