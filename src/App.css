@@ -13,12 +13,6 @@ header {
   margin: auto;
 }
 
-.code {
-  min-height: 50px;
-  margin-left: 10px;
-  margin-bottom: 10px;
-}
-
 .expression {
   display: flex;
 }
@@ -33,4 +27,11 @@ header {
 
 .dialect {
   margin-bottom: 15px;
+}
+
+.code {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
 }

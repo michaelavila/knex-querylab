@@ -62,9 +62,8 @@ export default function App() {
 				<Typography className='subtitle' variant='h6'>Expression</Typography>
 
 				{/* body - input knex query*/}
-				<Paper>
+				<Paper className='code'>
 					<Editor
-						className='code'
 						value={displayQuery}
 						onValueChange={updateQuery}
 						highlight={(code) => highlight(code, languages.javascript, 'javascript')} />
@@ -73,9 +72,8 @@ export default function App() {
 				<Typography className='subtitle' variant='h6'>Query</Typography>
 
 				{/* body - output sql*/}
-				<Paper>
+				<Paper className='code'>
 					<Editor
-						className='code'
 						disabled={true}
 						value={toQuery}
 						onValueChange={noop}
@@ -85,9 +83,8 @@ export default function App() {
 				<Typography className='subtitle' variant='h6'>SQL - Native</Typography>
 
 				{/* body - output native*/}
-				<Paper>
+				<Paper className='code'>
 					<Editor
-						className='code'
 						disabled={true}
 						value={sql}
 						onValueChange={noop}
