@@ -9,11 +9,12 @@
     "@types/react-dom": "16.8.4",
     "knex": "^0.19.5",
     "lz-string": "^1.4.4",
+    "prismjs": "^1.23.0",
     "query-string": "^6.14.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
-    "react-syntax-highlighter": "^15.4.3"
+    "react-simple-code-editor": "^0.11.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,7 +41,7 @@
   },
   "devDependencies": {
     "@types/lz-string": "^1.3.34",
-    "@types/react-syntax-highlighter": "^13.5.0",
+    "@types/prismjs": "^1.16.3",
     "gh-pages": "^2.0.1",
     "mssql": "npm:noop@^0.2.2",
     "typescript": "3.5.3"
