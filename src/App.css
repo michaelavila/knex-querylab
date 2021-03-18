@@ -1,5 +1,10 @@
 body {
-  background-color: #FFF;
+  background-color: #efcb68;
+}
+
+header {
+  padding-top: 10px;
+  padding-bottom: 40px;
 }
 
 .App {
@@ -7,24 +12,24 @@ body {
   margin: auto;
 }
 
-.expressionEditor {
-  padding-left: 20px;
-  min-height: 100px;
-  background-color: #EEE;
-  margin: 20px 0 20px 0;
+.code {
+  min-height: 50px;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
-.queryViewer {
-  padding-left: 20px;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  background-color: #EEE;
+.expression {
+  display: flex;
 }
 
-.bindingsViewer table {
-  background-color: #DDD;
+.bindings {
+  margin-bottom: 40px;
 }
 
-footer {
-  margin-top: 100px;
+.subtitle {
+  padding-bottom: 5px;
+}
+
+.dialect {
+  margin-bottom: 15px;
 }

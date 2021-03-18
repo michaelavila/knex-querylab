@@ -16,6 +16,8 @@ import { highlight, languages } from 'prismjs';
 import 'prismjs/components/prism-sql';
 import 'prismjs/themes/prism.css'; // change the theme here
 
+import { FormControl, InputLabel, Select, MenuItem, Typography, Table, TableHead, TableBody, TableRow, TableCell, Link, Paper, Grid, TableContainer } from '@material-ui/core';
+
 
 // decompresses to: knex('change').select('me').count();
 const DEFAULT_QUERY = "NYOwpgHgFA5AxgCwIYgOZhgSgHQGcwA2YcALrALYY5wD2AriGZgNxA";
@@ -25,8 +27,8 @@ export default function App() {
 	const [dialect, setDialect] = useQueryString('dialect', DEFAULT_DIALECT);
 	const [query, setQuery] = useQueryString('query', DEFAULT_QUERY);
 
-	const updateDialect = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
-		setDialect(e.target.value);
+	const updateDialect = useCallback((value: string) => {
+		setDialect(value);
 	}, [setDialect]);
 
 	const updateQuery = useCallback((value: string) => {
@@ -35,58 +37,85 @@ export default function App() {
 	}, [setQuery]);
 
 	const displayQuery = LZString.decompressFromEncodedURIComponent(query) || "Unknown error";
-	const [sql, bindings] = translate(displayQuery, dialect);
+	const [toQuery, sql, bindings] = translate(displayQuery, dialect);
 
 	const noop = () => {};
 
 	return (
 		<div className='App'>
 			{/* header */}
-			<header><h1>Knex QueryLab</h1></header>
+			<header><Typography variant='h2'>Knex QueryLab</Typography></header>
 
-			{/* body */}
-			{/* body - select dialect */}
-			<div className='dialect'>
-				<select value={dialect} onChange={updateDialect}>
-					{allDialects().map((d, i) => { return <option key={i} value={d}>{d}</option> })}
-				</select>
-			</div>
+			<section>
+				{/* body */}
 
-			{/* body - input knex query*/}
-			<div className='expressionEditor'>
-				<Editor
-					value={displayQuery}
-					onValueChange={updateQuery}
-					highlight={(code) => highlight(code, languages.javascript, 'javascript')} />
-			</div>
+				{/* body - select dialect */}
+				<FormControl variant="outlined">
+					<InputLabel id="dialect-select-label">Dialect</InputLabel>
+					<Select className='dialect' labelId="dialect-select-label" value={dialect} onChange={(e) => updateDialect(e.target.value as string)} label="Dialect">
+						{allDialects().map((d) => <MenuItem value={d}>{d}</MenuItem>)}
+					</Select>
+				</FormControl>
 
-			{/* body - output sql*/}
-			<div className='queryViewer'>
-				<Editor
-					disabled={true}
-					value={sql}
-					onValueChange={noop}
-					highlight={(code) => highlight(code, languages.sql, 'sql')} />
-			</div>
+				<Typography className='subtitle' variant='h6'>Expression</Typography>
 
-			{/* body - output bindings*/}
-			<div className='bindingsViewer'>
-				<table>
-					<thead><tr><td>Binding</td><td>Value</td></tr></thead>
-					<tbody>
-						{bindings.map((value, index) => {
-							return (<tr key={index+1}><td>{index+1}</td><td>{value}</td></tr>);
-						})}
-					</tbody>
-				</table>
-			</div>
+				{/* body - input knex query*/}
+				<Paper>
+					<Editor
+						className='code'
+						value={displayQuery}
+						onValueChange={updateQuery}
+						highlight={(code) => highlight(code, languages.javascript, 'javascript')} />
+				</Paper>
+
+				<Typography className='subtitle' variant='h6'>toQuery()</Typography>
+
+				{/* body - output sql*/}
+				<Paper>
+					<Editor
+						className='code'
+						disabled={true}
+						value={toQuery}
+						onValueChange={noop}
+						highlight={(code) => highlight(code, languages.sql, 'sql')} />
+				</Paper>
+
+				<Typography className='subtitle' variant='h6'>toSQL().toNative()</Typography>
+
+				{/* body - output native*/}
+				<Paper>
+					<Editor
+						className='code'
+						disabled={true}
+						value={sql}
+						onValueChange={noop}
+						highlight={(code) => highlight(code, languages.sql, 'sql')} />
+				</Paper>
+
+				{/* body - output bindings*/}
+				<TableContainer	component={Paper} className='bindings'>
+					<Table>
+						<TableHead>
+							<TableRow><TableCell style={{ width: '20px' }}>Binding</TableCell><TableCell>Value</TableCell></TableRow>
+						</TableHead>
+						<TableBody>
+							{bindings.map((value, index) => {
+								return (<TableRow key={index+1}>
+									<TableCell>{index+1}</TableCell>
+									<TableCell>{value}</TableCell>
+								</TableRow>);
+							})}
+						</TableBody>
+					</Table>
+				</TableContainer>
+			</section>
 
 			{/* footer */}
 			<footer>
-				<span>
-					Experiment with the <a href='https://knexjs.org'>KnexJS</a> API to build
-					SQL. <a href="https://github.com/michaelavila/knex-querylab">View source.</a>
-				</span>
+				<Typography variant='body1'>
+					Experiment with the <Link href='https://knexjs.org'>KnexJS</Link> API to build
+					SQL. <Link href="https://github.com/michaelavila/knex-querylab">View source.</Link>
+				</Typography>
 			</footer>
 		</div>
 	);

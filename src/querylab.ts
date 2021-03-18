@@ -20,13 +20,15 @@ export function allDialects() {
   return dialects
 }
 
-export function translate(knexjs: string, dialect: string): [string, any[]] {
+export function translate(knexjs: string, dialect: string): [string, string, any[]] {
   const knex = Knex({client: dialect})
   try {
-    const parsed = eval(knexjs).toSQL().toNative()
-    return [parsed.sql, parsed.bindings];
+    const parsed = eval(knexjs);
+    const query = parsed.toQuery();
+    const native = parsed.toSQL().toNative();
+    return [query, native.sql, native.bindings];
   } catch {
-    return ["syntax error", []]
+    return ["syntax error", "", []]
   }
 }
 
