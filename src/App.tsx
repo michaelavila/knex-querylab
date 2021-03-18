@@ -35,6 +35,9 @@ export default function App() {
 	}, [setQuery]);
 
 	const displayQuery = LZString.decompressFromEncodedURIComponent(query) || "Unknown error";
+	const [sql, bindings] = translate(displayQuery, dialect);
+
+	const noop = () => {};
 
 	return (
 		<div className='App'>
@@ -61,10 +64,20 @@ export default function App() {
 			<div>
 				<Editor
 					disabled={true}
-					value={translate(displayQuery, dialect)}
-					onValueChange={(value) => console.log(value)}
+					value={sql}
+					onValueChange={noop}
 					highlight={(code) => highlight(code, languages.sql, 'sql')} />
 			</div>
+
+			{/* body - output bindings*/}
+			<table>
+				<thead><tr><td>Binding</td><td>Value</td></tr></thead>
+				<tbody>
+				{bindings.map((value, index) => {
+					return (<tr key={index+1}><td>{index+1}</td><td>{value}</td></tr>);
+				})}
+				</tbody>
+			</table>
 
 			{/* footer */}
 			<div>
