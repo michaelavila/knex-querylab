@@ -14,7 +14,7 @@ import { useQueryString } from './use-query-string';
 import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs';
 import 'prismjs/components/prism-sql';
-import 'prismjs/themes/prism.css'; // change the theme here
+import 'prismjs/themes/prism-solarizedlight.css'; // change the theme here
 
 import { FormControl, InputLabel, Select, MenuItem, Typography, Table, TableHead, TableBody, TableRow, TableCell, Link, Paper, Grid, TableContainer } from '@material-ui/core';
 
@@ -68,7 +68,7 @@ export default function App() {
 						highlight={(code) => highlight(code, languages.javascript, 'javascript')} />
 				</Paper>
 
-				<Typography className='subtitle' variant='h6'>toQuery()</Typography>
+				<Typography className='subtitle' variant='h6'>Query</Typography>
 
 				{/* body - output sql*/}
 				<Paper>
@@ -80,7 +80,7 @@ export default function App() {
 						highlight={(code) => highlight(code, languages.sql, 'sql')} />
 				</Paper>
 
-				<Typography className='subtitle' variant='h6'>toSQL().toNative()</Typography>
+				<Typography className='subtitle' variant='h6'>SQL - Native</Typography>
 
 				{/* body - output native*/}
 				<Paper>
