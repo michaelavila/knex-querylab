@@ -38,7 +38,7 @@ export default function App() {
 		setQuery(compressed);
 	}, [setQuery]);
 
-	const displayQuery = LZString.decompressFromEncodedURIComponent(query) || "Unknown error";
+	const displayQuery = LZString.decompressFromEncodedURIComponent(query) || "";
 	const [toQuery, sql, bindings] = translate(displayQuery, dialect);
 
 	const noop = () => {};
