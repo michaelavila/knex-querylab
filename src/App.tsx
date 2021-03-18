@@ -55,7 +55,7 @@ export default function App() {
 				<FormControl variant="outlined">
 					<InputLabel id="dialect-select-label">Dialect</InputLabel>
 					<Select className='dialect' labelId="dialect-select-label" value={dialect} onChange={(e) => updateDialect(e.target.value as string)} label="Dialect">
-						{allDialects().map((d) => <MenuItem value={d}>{d}</MenuItem>)}
+						{allDialects().map((d, i) => <MenuItem key={i} value={d}>{d}</MenuItem>)}
 					</Select>
 				</FormControl>
 
@@ -101,7 +101,7 @@ export default function App() {
 							{bindings.map((value, index) => {
 								return (<TableRow key={index+1}>
 									<TableCell>{index+1}</TableCell>
-									<TableCell>{value}</TableCell>
+									<TableCell>{JSON.stringify(value)}</TableCell>
 								</TableRow>);
 							})}
 						</TableBody>
