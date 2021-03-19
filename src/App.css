@@ -10,15 +10,17 @@
 body {
   background-color: #f0f0f2;
   color: #040404;
-}
-
-header {
-  padding-top: 10px;
-  padding-bottom: 40px;
+  flexGrow: 1;
+  margin: 0;
+  margin-top: 10px;
 }
 
 footer {
   margin-bottom: 20px;
+}
+
+header {
+  margin-bottom: 40px;
 }
 
 .App {
