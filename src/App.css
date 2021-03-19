@@ -1,11 +1,24 @@
+/* CSS HEX */
+/*
+--baby-powder: #f0f0f2;
+--pale-spring-bud: #e4e6c3;
+--artichoke: #899878;
+--charleston-green: #222725;
+--rich-black-fogra-39: #121113f;
+*/
+
 body {
-  background-color: #d7d9ce;
+  background-color: #f0f0f2;
   color: #040404;
 }
 
 header {
   padding-top: 10px;
   padding-bottom: 40px;
+}
+
+footer {
+  margin-bottom: 20px;
 }
 
 .App {
