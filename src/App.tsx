@@ -1,4 +1,4 @@
-import React, { useCallback, ChangeEvent } from 'react';
+import React, { useCallback, ChangeEvent, useState } from 'react';
 import './App.css';
 
 // querylab lib code
@@ -18,8 +18,8 @@ import 'prismjs/themes/prism-solarizedlight.css'; // change the theme here
 
 import { format } from 'sql-formatter';
 
-import { FormControl, InputLabel, Select, MenuItem, Typography, Table, TableHead, TableBody, TableRow, TableCell, Link, Paper, Grid, TableContainer } from '@material-ui/core';
-
+import { FormControl, InputLabel, Select, MenuItem, Typography, Table, TableHead, TableBody, TableRow, TableCell, Link, Paper, Grid, TableContainer, Snackbar, Button } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 
 // decompresses to: knex('change').select('me').count();
 const DEFAULT_QUERY = "NYOwpgHgFA5AxgCwIYgOZhgSgHQGcwA2YcALrALYY5wD2AriGZgNxA";
@@ -28,6 +28,7 @@ const DEFAULT_DIALECT = Dialect.postgres;
 export default function App() {
 	const [dialect, setDialect] = useQueryString('dialect', DEFAULT_DIALECT);
 	const [query, setQuery] = useQueryString('query', DEFAULT_QUERY);
+	const [message, setMessage] = useState<string | null>(null);
 
 	const updateDialect = useCallback((value: string) => {
 		setDialect(value);
@@ -43,8 +44,23 @@ export default function App() {
 
 	const noop = () => {};
 
+	const clearMessage = useCallback(() => {
+		setMessage(null)
+	}, [setMessage]);
+
+	const copy = useCallback((text) => {
+		navigator.clipboard.writeText(text);
+		setMessage('Copied to clipboard!');
+	}, [setMessage]);
+
 	return (
 		<div className='App'>
+			<Snackbar open={message !== null} autoHideDuration={3000} onClose={(e) => clearMessage()} >
+				<Alert severity="success" onClose={(e) => clearMessage()}>
+					Copied to clipboard!
+				</Alert>
+			</Snackbar>
+
 			{/* header */}
 			<header><Typography variant='h2'>Knex QueryLab</Typography></header>
 
@@ -61,6 +77,7 @@ export default function App() {
 
 				<Typography className='subtitle' variant='h6'>Expression</Typography>
 
+				<Button style={{float: 'right'}}	onClick={() => copy(displayQuery)}>Copy</Button>
 				{/* body - input knex query*/}
 				<Paper className='code'>
 					<Editor
@@ -71,6 +88,7 @@ export default function App() {
 
 				<Typography className='subtitle' variant='h6'>Query</Typography>
 
+				<Button style={{float: 'right'}}	onClick={() => copy(toQuery)}>Copy</Button>
 				{/* body - output sql*/}
 				<Paper className='code'>
 					<Editor
