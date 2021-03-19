@@ -25,6 +25,10 @@ import { Alert } from '@material-ui/lab';
 const DEFAULT_QUERY = "NYOwpgHgFA5AxgCwIYgOZhgSgHQGcwA2YcALrALYY5wD2AriGZgNxA";
 const DEFAULT_DIALECT = Dialect.postgres;
 
+const FORMAT_OPTIONS = {
+	uppercase: true,
+};
+
 export default function App() {
 	const [dialect, setDialect] = useQueryString('dialect', DEFAULT_DIALECT);
 	const [query, setQuery] = useQueryString('query', DEFAULT_QUERY);
@@ -95,7 +99,7 @@ export default function App() {
 						disabled={true}
 						value={toQuery}
 						onValueChange={noop}
-						highlight={(code) => highlight(format(code), languages.sql, 'sql')} />
+						highlight={(code) => highlight(format(code, FORMAT_OPTIONS), languages.sql, 'sql')} />
 				</Paper>
 
 				<Typography className='subtitle' variant='h6'>SQL - Native</Typography>
@@ -106,7 +110,7 @@ export default function App() {
 						disabled={true}
 						value={sql}
 						onValueChange={noop}
-						highlight={(code) => highlight(format(code), languages.sql, 'sql')} />
+						highlight={(code) => highlight(format(code, FORMAT_OPTIONS), languages.sql, 'sql')} />
 				</Paper>
 
 				{/* body - output bindings*/}
