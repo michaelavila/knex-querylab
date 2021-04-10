@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ebb9792db14615a0db2eb1861ba49f42",
+    "revision": "909bd1c1339b1cef389478e2b091814c",
     "url": "/knex-querylab/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/knex-querylab/static/css/2.da2a1a23.chunk.css"
   },
   {
-    "revision": "c72309f8e58051326784",
+    "revision": "891e675583ce33faafc5",
     "url": "/knex-querylab/static/css/main.05a3ccdb.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/knex-querylab/static/js/2.7697412c.chunk.js"
   },
   {
-    "revision": "c72309f8e58051326784",
-    "url": "/knex-querylab/static/js/main.5c0209aa.chunk.js"
+    "revision": "891e675583ce33faafc5",
+    "url": "/knex-querylab/static/js/main.275c67e3.chunk.js"
   },
   {
     "revision": "d88110396bfaf9589a5a",
