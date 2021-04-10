@@ -24,9 +24,10 @@ export function translate(knexjs: string, dialect: string): [string, string, any
   const knex = Knex({client: dialect})
   try {
     const parsed = eval(knexjs);
-    const query = parsed.toQuery();
+    const query = `${parsed.toQuery()};`;
     const native = parsed.toSQL().toNative();
-    return [query, native.sql, native.bindings];
+    const nativeQuery = `${native.sql};`;
+    return [query, nativeQuery, native.bindings];
   } catch {
     return ["syntax error", "", []]
   }
