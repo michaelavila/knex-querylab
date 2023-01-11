@@ -9,7 +9,7 @@
     "@types/node": "12.6.2",
     "@types/react": "16.8.23",
     "@types/react-dom": "16.8.4",
-    "knex": "^0.19.5",
+    "knex": "^2.4.0",
     "lz-string": "^1.4.4",
     "prismjs": "^1.23.0",
     "query-string": "^6.14.1",
